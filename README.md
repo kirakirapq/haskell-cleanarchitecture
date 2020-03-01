@@ -4,8 +4,7 @@ UseCase層からGateways層のRepository呼び出しは依存の向きが逆転�
 ![](https://user-images.githubusercontent.com/43517870/75620578-c2a15e00-5bcd-11ea-9f9a-28214d3e6776.png)
 
 ### DB設定
-DB設定は下記の手順で行っている
-`configs/PostgresqlConfig/Setting.hs`ファイルを作成
+`configs/PostgresqlConfig/Setting.hs`ファイルを作成して記述
 
 ```Setting.hs
 module PostgresqlConfig.Setting(getConn) where
