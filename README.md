@@ -36,6 +36,15 @@ getConn x
     | x == "port" = setConn  "port" (postgressPort dbconfig) :: String
 ```
 
+### Postgresql テーブル
+- Employee
+
+|  Field  |  型  |
+| ---- | ---- |
+|  id  |  bigint (PK)  |
+|  name  |  character varying (NOT NULL)  |
+|  age  |  bigint   |
+
 
 ### 起動
 
