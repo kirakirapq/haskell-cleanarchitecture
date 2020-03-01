@@ -3,6 +3,41 @@
 UseCase層からGateways層のRepository呼び出しは依存の向きが逆転しているのでデータクラスをUseCase層で持たせ、Repositoryで実装させたかったがうまくいかなかった。
 ![](https://user-images.githubusercontent.com/43517870/75620578-c2a15e00-5bcd-11ea-9f9a-28214d3e6776.png)
 
+### DB設定
+DB設定は下記の手順で行っている
+`configs/PostgresqlConfig/Setting.hs`ファイルを作成
+
+```Setting.hs
+module PostgresqlConfig.Setting(getConn) where
+data PostgresqlConfig = PostgresqlConfig {
+    postgressHost :: String,
+    postgressDbname :: String,
+    postgressUser :: String,
+    postgressPassword :: String,
+    postgressPort :: String
+}
+
+dbconfig :: PostgresqlConfig
+dbconfig = PostgresqlConfig {
+    postgressHost = "localhost", -- ホストアドレスを指定
+    postgressDbname = "my_database", -- DB名を指定
+    postgressUser = "username", -- username
+    postgressPassword = "password", -- password
+    postgressPort = "5432" -- port番号
+}
+
+setConn :: String -> String -> String
+setConn from to = from ++ "=" ++ to ++ " "
+
+getConn x
+    | x == "host" = setConn  "host" (postgressHost dbconfig)
+    | x == "dbname" = setConn  "dbname" (postgressDbname dbconfig)
+    | x == "user" = setConn  "user" (postgressUser dbconfig)
+    | x == "password" = setConn  "password" (postgressPassword dbconfig)
+    | x == "port" = setConn  "port" (postgressPort dbconfig) :: String
+```
+
+
 ### 起動
 
 ```
