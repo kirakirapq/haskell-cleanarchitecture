@@ -1,0 +1,7 @@
+-- 従業員モデル（データ型）を作成するサービスの振る舞いを定義
+module UseCases.Services.Employee.CreateEmployeeUseCaseClass where
+    import Presenters.Converters.Employee.InputEmployeeData
+
+    class CreateEmployeeUseCaseClass data => InputEmployeeData data where
+        createEmployee :: emp -> IO ()
+        

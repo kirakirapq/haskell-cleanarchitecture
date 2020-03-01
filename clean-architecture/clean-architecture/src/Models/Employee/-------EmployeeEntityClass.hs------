@@ -1,0 +1,8 @@
+-- 従業員モデル（データ型）の振る舞い（関数）を定義
+module Models.Employee.EmployeeEntityClass where
+    import Models.Employee.Age
+    import Models.Employee.Name
+
+    class EmployeeEntityClass a where
+        getName :: a -> Name
+        getAge  :: a -> Age
