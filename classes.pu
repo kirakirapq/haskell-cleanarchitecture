@@ -1,0 +1,43 @@
+@startuml
+title Clean Architecture Sample
+package Gateways #d5ffaa {
+    component Repositories.Employee #80ff00 {
+            file EmployeeRepository
+    }
+}
+
+package Contollers.Employee #d5ffaa {
+    file EmployeeContoller
+}
+
+package UseCases #ffd5ea {
+    component Sevices.Employee #ff2b95 {
+        file CreateEmployeeService
+    }
+}
+
+package Presenters #d5ffaa {
+    component Converters.Employee #80ff00 {
+        file InputEmployeeData
+    }
+}
+
+package Models #ffffaa {
+    component Employee #ffff00 {
+        file Age
+        file EmployeeEntity
+        file EmployeeEntityFactory
+        file Name
+    }
+}
+
+EmployeeContoller ..> InputEmployeeData : 1. データ変換
+EmployeeContoller ..> CreateEmployeeService : 2. ユースケース呼び出し
+CreateEmployeeService ..> EmployeeEntityFactory : 3.集約ルート取得
+CreateEmployeeService ..> EmployeeRepository: 4. Modelを永続化
+
+EmployeeEntityFactory ..> Age : 3-1. VO生成
+EmployeeEntityFactory ..> Name : 3-2. VO生成
+EmployeeEntityFactory ..> EmployeeEntity: 3-3. 集約ルート生成
+
+@enduml
