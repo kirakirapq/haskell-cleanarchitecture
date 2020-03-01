@@ -25,9 +25,12 @@ dependencies:
 - monad-logger
 - persistent
 - persistent-template
+- bytestring
 
 library:
-  source-dirs: src
+  source-dirs:
+    - src
+    - configs
 
 executables:
   clean-architecture-exe:
