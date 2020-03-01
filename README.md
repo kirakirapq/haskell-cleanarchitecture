@@ -8,8 +8,6 @@ Haskell Clean Architecture Sample
 # sart
 
 ```
-> initialize
-> stack init
 # build
 > stack build
 # run
