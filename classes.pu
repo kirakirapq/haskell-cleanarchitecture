@@ -8,17 +8,25 @@ package Gateways #d5ffaa {
 
 package Contollers.Employee #d5ffaa {
     file EmployeeContoller
+    ' 追加　generateInputEmployeeData メソッド定義
+    file InputEmployeeDataFactoryClass
 }
 
 package UseCases #ffd5ea {
     component Sevices.Employee #ff2b95 {
         file CreateEmployeeService
     }
+    ' 追加　getNameRaw getAgeRaw  メソッド定義
+    file InputEmployeeDataClass
+    ' 追加 addEmployee  メソッド定義
+    file EmployeeRepositoryClass
 }
 
 package Presenters #d5ffaa {
     component Converters.Employee #80ff00 {
         file InputEmployeeData
+        ' 追加 メソッド実装
+        file InputEmployeeDataFactory
     }
 }
 
