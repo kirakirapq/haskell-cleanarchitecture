@@ -1,5 +1,5 @@
 .stack-work/
-.history/
+.history
 clean-architecture.cabal
 *~
 configs/*
