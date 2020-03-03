@@ -1,6 +1,6 @@
 module Main where
 
-import Controllers.Employee.EmployeeController(callCreateEmployee)
+import Controllers.Employee.EmployeeController (callCreateEmployee, callGetEmployeeById)
 
 typeGet = 1 :: Int
 typeCreate = 2 :: Int
@@ -9,7 +9,7 @@ typeDelete = 4 :: Int
 
 main :: IO ()
 main = do
-    putStrLn "plese select number"
+    putStrLn "plese input number"
     putStrLn ("if get data then " ++ show typeGet)
     putStrLn ("and if make data then " ++ show typeCreate)
     putStrLn ("and if update data then " ++ show typeUpdate)
@@ -36,7 +36,10 @@ createMethod = do
 
 getMethod :: IO ()
 getMethod = do
-    putStrLn "GET!"
+    putStrLn "please input employee id"
+    id <- getLine
+
+    callGetEmployeeById id
 
 updateMethod :: IO ()
 updateMethod = do

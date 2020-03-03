@@ -50,3 +50,12 @@ addEmployee employee = runStderrLoggingT $ withPostgresqlPool connStr 10 $ \pool
 
         emp <- get empId
         liftIO $ print (emp :: Maybe Employee)
+
+-- idで取得
+readEmployeeById :: Int -> IO ()
+readEmployeeById employeeId = runStderrLoggingT $ withPostgresqlPool connStr 10 $ \pool -> liftIO $ do
+    flip runSqlPersistMPool pool $ do
+        runMigration migrateAll
+
+        employee <- get employeeId
+        liftIO $ print employee
